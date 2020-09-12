@@ -11,14 +11,16 @@ class App extends Component {
           price: 99,
           title: "Watch",
           qty: 1,
-          img: "",
+          img:
+            "https://images.unsplash.com/photo-1524805444758-089113d48a6d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
           id: 1,
         },
         {
           price: 999,
           title: "Mobile Phone",
           qty: 10,
-          img: "",
+          img:
+            "https://images.unsplash.com/photo-1520923642038-b4259acecbd7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1306&q=80",
           id: 2,
         },
         {
@@ -31,6 +33,8 @@ class App extends Component {
         },
       ],
     };
+    // this.increaseQuantity = this.increaseQuantity.bind(this);
+    // this.testing();
   }
 
   handleIncreaseQuantity = (product) => {
@@ -81,9 +85,20 @@ class App extends Component {
     return count;
   };
 
-  render() {
+  getCartTotal = () => {
+    const { products } = this.state;
 
-     const { products } = this.state;
+    let cartTotal = 0;
+
+    products.map((product) => {
+      cartTotal = cartTotal + product.qty * product.price;
+    });
+
+    return cartTotal;
+  };
+
+  render() {
+    const { products } = this.state;
     return (
       <div className="App">
         <Navbar count={this.getCartCount()} />
@@ -94,6 +109,10 @@ class App extends Component {
           onDecreaseQuantity={this.handleDecreaseQuantity}
           onDeleteProduct={this.handleDeleteProduct}
         />
+
+        <div className="Total" style={{ padding: 10, fontSize: 20 }}>
+          Total: {this.getCartTotal()}
+        </div>
       </div>
     );
   }
