@@ -1,6 +1,6 @@
 import React from 'react';
 
-class CartItem extends React.Component
+const CartItem= (props)=>
 {
     // constructor() {
     //     super();
@@ -14,45 +14,45 @@ class CartItem extends React.Component
 
     // }
     //eventHandler
-    increaseQuantity=() =>{
-        //console.log('this', this.state);
-        // this.setState({
-        //     qty:this.state.qty+=1
-        // });
+    // increaseQuantity=() =>{
+    //     //console.log('this', this.state);
+    //     // this.setState({
+    //     //     qty:this.state.qty+=1
+    //     // });
 
-        this.setState((prevState) => {
-            return{
-                qty:prevState.qty+1
-            }
-        });
-    }
+    //     this.setState((prevState) => {
+    //         return{
+    //             qty:prevState.qty+1
+    //         }
+    //     });
+    // }
 
-    decreaseQuantity = () => {
+    // decreaseQuantity = () => {
         
 
-        this.setState((prevState) => {
+    //     this.setState((prevState) => {
            
-            const {qty} =this.state;
+    //         const {qty} =this.state;
 
-            if(qty==0)
-                return;
+    //         if(qty==0)
+    //             return;
 
-            return {
-               qty:qty-1
-            }
-        });
-    }
+    //         return {
+    //            qty:qty-1
+    //         }
+    //     });
+    // }
 
-    render()
-    {
+    // render()
+    // {
         //const { price, title, qty } = this.state;
-        const { price, title, qty } = this.props.product;
+        const { price, title, qty } = props.product;
         const {
               product,
               onIncreaseQuantity,
               onDecreaseQuantity,
               onDeleteProduct,
-            } = this.props;
+            } = props;
 
         return (
           <div className="cart-item">
@@ -89,7 +89,7 @@ class CartItem extends React.Component
             </div>
           </div>
         );
-    }
+    //}
 };
 
 const styles={
